@@ -45,6 +45,10 @@ function MessengerModal({ open, handleOnClose }) {
     setMessage("");
   };
 
+  function handleKeyDown(e) {
+    if (e.key === "Enter" && message) handleMessageSend();
+  }
+
   const currentTimestamp = () => {
     return new Date().toLocaleTimeString();
   };
@@ -53,7 +57,7 @@ function MessengerModal({ open, handleOnClose }) {
     <Modal open={open}>
       <ModalHeader title="Room messages" handleOnClose={handleOnClose} />
       <div className="flex flex-col gap-1 px-4 py-2">
-        <div className="h-[12rem] lg:h-[29rem] flex flex-col gap-2 mb-4 overflow-y-auto">
+        <div className="h-[12rem] lg:h-[29rem] 2xl:h-[46rem] flex flex-col gap-2 mb-4 overflow-y-auto">
           {showMessages.map((msg, i) => {
             return msg.type === "my" ? (
               <RightMessage key={i} message={msg.value} username="Me" time={msg.date} />
@@ -69,6 +73,7 @@ function MessengerModal({ open, handleOnClose }) {
             placeholder="Sent a message to everyone"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
           <button
             className="bg-[#0055ff] px-3 py-2 rounded-lg flex justify-center items-center cursor-pointer hover:bg-[#316de6] disabled:cursor-not-allowed disabled:bg-blue-400"

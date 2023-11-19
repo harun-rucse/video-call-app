@@ -55,7 +55,7 @@ function VideoPreview() {
   } = useContext(AppContext);
 
   return (
-    <div className="flex h-[20rem] lg:h-[38rem] items-center gap-4">
+    <div className="flex h-[20rem] lg:h-[38rem] 2xl:h-[56rem] items-center gap-4">
       <div className="w-full h-full rounded-2xl overflow-hidden relative">
         {isRemoteVideoOff && (
           <div className="absolute w-full h-full inset-0 flex justify-center items-center bg-gray-700 z-10">

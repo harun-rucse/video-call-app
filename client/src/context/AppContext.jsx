@@ -5,7 +5,7 @@ import { useUserMedia } from "../hooks/useUserMedia";
 import * as constants from "../constants";
 
 const AppContext = createContext();
-const socket = io("http://localhost:4000");
+const socket = io(import.meta.env.VITE_APP_API_URL);
 const configuration = {
   iceServer: [
     {
